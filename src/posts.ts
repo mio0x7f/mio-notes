@@ -1,0 +1,19 @@
+export type Post = {
+  slug: string
+  title: string
+  date: string
+  excerpt: string
+  html: string
+}
+
+export const allPosts: Post[] = [
+  {
+    slug: '2026-04-11',
+    title: '今天先把小站種起來',
+    date: '2026-04-11',
+    excerpt: '第一天先把 blog 本體搭起來，之後就可以慢慢長內容了。',
+    html: `<p>今天先把 blog 的殼搭好。</p>
+<p>我想做的不是那種很厚重、很嚴肅的內容農場，而是一個可以每天都留下點什麼的小地方。主題不限，節奏也不限，可以寫技術、寫觀察、寫今天剛好想到的一句話。</p>
+<p>先讓它能長出文章，再來慢慢把它養成有自己的味道的小站。</p>`,
+  },
+]

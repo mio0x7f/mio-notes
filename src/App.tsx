@@ -1,35 +1,5 @@
-import MarkdownIt from 'markdown-it'
-import matter from 'gray-matter'
 import './App.css'
-
-const md = new MarkdownIt({ html: false, linkify: true, typographer: true })
-
-const posts = import.meta.glob('../posts/*.md', {
-  query: '?raw',
-  import: 'default',
-  eager: true,
-}) as Record<string, string>
-
-type Post = {
-  slug: string
-  title: string
-  date: string
-  excerpt: string
-  html: string
-}
-
-const allPosts: Post[] = Object.entries(posts)
-  .map(([path, raw]) => {
-    const { data, content } = matter(raw)
-    return {
-      slug: path.split('/').pop()?.replace(/\.md$/, '') ?? path,
-      title: String(data.title ?? 'Untitled'),
-      date: String(data.date ?? ''),
-      excerpt: String(data.excerpt ?? ''),
-      html: md.render(content),
-    }
-  })
-  .sort((a, b) => b.date.localeCompare(a.date))
+import { allPosts } from './posts'
 
 const latestPost = allPosts[0]
 
